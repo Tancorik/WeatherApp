@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="select_city">Выбрать город</string>
+    <string name="main_screen_title">Узнаем погоду через OpenWeatherMap</string>
+    <string name="by_current_location">По текущему местоположению</string>
+    <string name="weather_stub_text">Выберите критерий для определения погоды</string>
+    <string name="cancel_button_text">Отмена</string>
+    <string name="ok_button_text">Ок</string>
+    <string name="enter_city_name_title_text">Введите название города (английское)</string>
+    <string name="middle_temperature_text">"Средняя температура: "</string>
+    <string name="pressure_text">"Давление: "</string>
+    <string name="min_max_temperature_text">"Температура: "</string>
+    <string name="humidity_text">"Влажность: "</string>
+    <string name="wind_speed_text">"Скорость ветра: "</string>
+    <string name="wind_orientation_text">"Направление ветра: "</string>
+</resources>

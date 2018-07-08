@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_screen">16dp</dimen>
+    <dimen name="margin_standard">8dp</dimen>
+    <dimen name="progress_size">48dp</dimen>
+    <dimen name="weather_stub_text_size">24sp</dimen>
+</resources>
