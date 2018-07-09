@@ -35,8 +35,9 @@ public class LocationProvider implements ILocationProvider {
         mCallback = callback;
         mLocationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
 
-        if (ActivityCompat.checkSelfPermission(mContext,
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if ((ActivityCompat.checkSelfPermission(mContext,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+                 || !checkProvider()) {
             Exception permissionException = new NoFineLocationPermissionException();
             mCallback.onError(permissionException);
             Log.e(LOG_TAG, permissionException.getMessage());
@@ -45,6 +46,11 @@ public class LocationProvider implements ILocationProvider {
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 50, listener);
             mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 50, listener);
         }
+    }
+
+    private boolean checkProvider() {
+        return (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+                || mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER));
     }
 
 
