@@ -67,19 +67,19 @@ public class MainScreenPresenter {
             public void onSuccess(WeatherInfo weatherInfo) {
                 mCurrentWeatherInfo = weatherInfo;
                 mCurrentWeatherInfo.setCriterionText(mWeatherCriterion);
+                mInProgress = false;
                 if (mView != null) {
                     mView.showWeather(weatherInfo);
-                    mInProgress = false;
                 }
             }
 
             @Override
             public void onError(Throwable error) {
+                mInProgress = false;
                 if (mView != null) {
                     showInfoOrStub();
                     mErrorMessage = WEATHER_SERVICE_ERROR_MESSAGE;
                     mView.showError();
-                    mInProgress = false;
                 }
             }
         });
@@ -97,17 +97,17 @@ public class MainScreenPresenter {
                     public void onSuccess(WeatherInfo weatherInfo) {
                         mCurrentWeatherInfo = weatherInfo;
                         mCurrentWeatherInfo.setCriterionText(mWeatherCriterion);
+                        mInProgress = false;
                         if (mView != null) {
                             mView.showWeather(weatherInfo);
-                            mInProgress = false;
                         }
                     }
 
                     @Override
                     public void onError(Throwable error) {
+                        mInProgress = false;
                         if (mView != null) {
                             showInfoOrStub();
-                            mInProgress = false;
                         }
                     }
                 });
@@ -115,8 +115,9 @@ public class MainScreenPresenter {
 
             @Override
             public void onError(Throwable error) {
+                mInProgress = false;
                 if (mView != null) {
-                    mInProgress = false;
+                    showInfoOrStub();
                     if (!(error instanceof NoFineLocationPermissionException)) {
                         mErrorMessage = "Системная ошибка";
                     }
